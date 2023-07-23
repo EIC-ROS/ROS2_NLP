@@ -1,0 +1,7 @@
+uint8 SPEECHTOTEXT=0
+uint8 TEXTTOSPEECH=1
+uint8 WAKEWORD=2
+uint8 ASR=3
+uint8 NLU=4
+
+uint8 type

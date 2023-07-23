@@ -1,0 +1,5 @@
+nlp_connector_dependencies/NLPType nlp_type
+string req_info
+---
+string result
+bool success
