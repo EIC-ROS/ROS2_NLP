@@ -14,8 +14,8 @@ class NLPConnectorClient(Node):
                 self.get_logger().info('service not available, waiting again...')
             self.req = NLPSrv.Request()
     
-        def send_request(self, text, nlp_type):
-            self.req.req_info = text
+        def send_request(self, req_info, nlp_type):
+            self.req.req_info = req_info
             self.req.nlp_type.type = nlp_type
             self.get_logger().info('Sending request...')
             self.future = self.cli.call_async(self.req)
@@ -25,8 +25,8 @@ class NLPConnectorClient(Node):
 def main():
     rclpy.init()
     nlp_connector_client = NLPConnectorClient()
-    response = nlp_connector_client.send_request("Hello World, this is a test message", NLPType.TEXTTOSPEECH)
-
+    response = nlp_connector_client.send_request("walkie_freeze", NLPType.WAKEWORD)
+    print(response.result)
     nlp_connector_client.destroy_node()
     rclpy.shutdown()
 

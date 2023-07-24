@@ -31,6 +31,12 @@ class NLPconnector(Node):
             except:
                 response.success = False
                 response.result = "Error"
+        elif type == NLPType.WAKEWORD:
+            text : str = request.req_info
+            r = requests.get(f"http://localhost:5100/{text}")
+            response.success = (r.status_code == 200)
+            response.result = f'wakeword {text} has been detected'
+        self.get_logger().info('Sending response')
         return response
 
 def main():
